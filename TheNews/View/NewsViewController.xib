@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsViewController" customModule="TheNews" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="ga2-Af-ajn" id="7hW-Db-ff3"/>
                 <outlet property="newsCollectionView" destination="KYs-nT-BtK" id="Sxh-ML-EwF"/>
                 <outlet property="view" destination="iN0-l3-epB" id="gyL-0i-k5c"/>
             </connections>
@@ -31,15 +32,24 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <activityIndicatorView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ga2-Af-ajn">
+                    <rect key="frame" x="167" y="413" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="MjU-cg-fEs"/>
+                        <constraint firstAttribute="height" constant="80" id="WOM-ts-4xS"/>
+                    </constraints>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="ga2-Af-ajn" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="1fo-mP-soY"/>
                 <constraint firstItem="KYs-nT-BtK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="M9Y-p4-2zB"/>
                 <constraint firstItem="KYs-nT-BtK" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="SFN-6t-ncZ"/>
                 <constraint firstItem="KYs-nT-BtK" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="WhA-Gx-RZY"/>
                 <constraint firstItem="KYs-nT-BtK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aSB-uH-tQJ"/>
                 <constraint firstItem="KYs-nT-BtK" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="dkc-xh-COz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="KYs-nT-BtK" secondAttribute="bottom" id="jQ9-Qh-cak"/>
+                <constraint firstItem="ga2-Af-ajn" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="pLu-N0-xbg"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>

@@ -20,6 +20,13 @@ class NewsViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! {
+        didSet {
+            activityIndicator.tintColor = .red
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.color = .red
+        }
+    }
     private let viewModel: NewsViewModel
     private var counter: Int = 1
     private let disposeBag = DisposeBag()
@@ -43,7 +50,11 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         bind()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 }
 
 //MARK: - private methods
@@ -54,7 +65,8 @@ extension NewsViewController {
         let config: NewsIntput = (
             collectionView: newsCollectionView.rx,
             navigation: navigationController,
-            loadPage: loadMoreNews
+            loadPage: loadMoreNews,
+            indicator: activityIndicator
         )
         let output = viewModel.setup(input:config)
         

@@ -32,7 +32,7 @@ extension UINavigationController {
     }
     
     static func showOfflineAlert(with navigation: UINavigationController?) {
-        let alertController = UIAlertController(title: NSLocalizedString("Error", comment: "Error"), message: NSLocalizedString("You are offline", comment: "You are offline"), preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("Error", comment: "Error"), message: NSLocalizedString("Error fetching the news", comment: "Error fetching the news"), preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
         alertController.addAction(action)
         if let navigation = navigation?.visibleViewController {

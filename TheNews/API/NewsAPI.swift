@@ -41,7 +41,7 @@ extension NewsAPI: TargetType {
     var sampleData: Data {
         switch self {
         case .getTopHeadlines(_,_):
-            guard let url = Bundle.main.url(forResource: "manufacturerJson", withExtension: "json"),
+            guard let url = Bundle.main.url(forResource: "NewsAPI", withExtension: "json"),
                 let data = try? Data(contentsOf: url) else {
                     return Data()
             }

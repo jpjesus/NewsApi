@@ -15,7 +15,8 @@ import Moya
 typealias NewsIntput = (
     collectionView: Reactive<UICollectionView>,
     navigation: UINavigationController?,
-    loadPage: Observable<Int>
+    loadPage: Observable<Int>,
+    indicator: UIActivityIndicatorView
 )
 
 typealias NewtOutput = (
@@ -35,10 +36,18 @@ class NewsViewModel {
     
     func setup(input: NewsIntput) -> NewtOutput {
         
+        input.indicator.startAnimating()
+        
         let news =
             input.loadPage.flatMap { [weak self] page -> Observable<News> in
                 guard let self = self else { return Observable.just(News()) }
                 return self.provider.rx.request(.getTopHeadlines(page: page, pageSize: 21))
+                    .do(onSuccess: {  _ in
+                        input.indicator.stopAnimating()
+                    }, onError: {  _ in
+                        input.indicator.stopAnimating()
+                        UINavigationController.showOfflineAlert(with: input.navigation)
+                    })
                     .asObservable()
                     .map(News.self)
                     .retry(3)
