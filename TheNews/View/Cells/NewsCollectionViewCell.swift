@@ -26,6 +26,8 @@ class NewsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var articleImageView: UIImageView! {
         didSet {
             articleImageView.contentMode = .scaleAspectFit
+            articleImageView.setupShadow(radius: 5.0, opacity: 0.5, offset: 2.0, color: UIColor.cloudy())
+            articleImageView.setupRoundedCorners(radius: 10)
         }
     }
     @IBOutlet weak var titleLabel: UILabel! {
@@ -71,15 +73,11 @@ class NewsCollectionViewCell: UICollectionViewCell {
     
     private func setImageUrl(article: Article) {
         let url = article.imageUrl
-        let processing = DownsamplingImageProcessor(size: articleImageView.bounds.size)
-            >> RoundCornerImageProcessor(cornerRadius: 10)
         articleImageView.kf.indicatorType = .activity
         articleImageView.kf.setImage(
             with: url,
             placeholder: UIImage(named: "placeholderImage"),
             options: [
-                .processor(processing),
-                .scaleFactor(UIScreen.main.nativeScale),
                 .transition(.fade(1)),
                 .cacheOriginalImage
             ])

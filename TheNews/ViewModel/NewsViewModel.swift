@@ -57,6 +57,11 @@ class NewsViewModel {
                 selectCell: selectCell,
                 articles: articles)
     }
+    
+    func showFullArticle(with url: URL?, navigation: UINavigationController?) {
+        let vc = ArticleViewController(url: url)
+        navigation?.pushFadeAnimation(viewController: vc)
+    }
 }
 
 extension NewsViewModel {

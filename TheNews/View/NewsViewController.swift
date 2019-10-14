@@ -65,9 +65,9 @@ extension NewsViewController {
             .disposed(by: disposeBag)
         
         output.selectCell
-            .subscribe(onNext: { [weak self] car in
+            .subscribe(onNext: { [weak self] article in
                 guard let self = self else { return }
-                //self.viewModel.showCarInfo(with: car, navigation: self.navigationController)
+                self.viewModel.showFullArticle(with: article.url, navigation: self.navigationController)
             }).disposed(by: disposeBag)
         
         self.articles = output.articles
